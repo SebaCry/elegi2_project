@@ -1,0 +1,125 @@
+---
+// Hero — apertura monumental, tipográfica, editorial.
+// La gigantesca "2" hace eco del logo y vive como elemento gráfico.
+---
+
+<section
+  id="inicio"
+  class="relative min-h-screen flex flex-col justify-between overflow-hidden bg-ink"
+>
+  <!-- "2" gigante de fondo, cortado y brutal -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-10 right-[-6vw] md:right-[-4vw] select-none"
+  >
+    <span
+      class="font-display text-cream/[0.06] leading-none block"
+      style="font-size: clamp(28rem, 60vw, 70rem); letter-spacing: -0.06em;"
+    >2</span>
+  </div>
+
+  <!-- Líneas verticales editoriales -->
+  <div class="absolute inset-y-0 left-[15%] w-px editorial-rule hidden lg:block" aria-hidden="true"></div>
+  <div class="absolute inset-y-0 right-[15%] w-px editorial-rule hidden lg:block" aria-hidden="true"></div>
+
+  <!-- Top meta strip -->
+  <div
+    class="relative z-10 pt-28 md:pt-32 px-6 md:px-10 flex items-center justify-between text-[12px] tracking-[0.32em] uppercase text-bone-muted animate-fade-in animate-duration-[1200ms]"
+  >
+    <span class="hidden md:inline">N° 001 — Manifiesto</span>
+    <span data-today>Hoy</span>
+    <span class="hidden md:inline">Bogotá · Medellín · Cali</span>
+  </div>
+
+  <!-- Núcleo del hero -->
+  <div class="relative z-10 px-6 md:px-10 grid grid-cols-12 gap-6 items-end pb-16">
+    <div class="col-span-12 lg:col-span-9">
+      <p class="eyebrow animate-fade-in-up animate-duration-1000">
+        3 voces · 1 propósito
+      </p>
+
+      <h1
+        class="mt-8 font-display uppercase text-bone leading-[0.85] animate-reveal-mask"
+        style="font-size: clamp(3.5rem, 12vw, 11rem); letter-spacing: -0.05em;"
+      >
+        Porque no
+        <br />
+        lo elegimos
+        <br />
+        <span class="text-cream">nosotros a Él.</span>
+      </h1>
+
+      <div
+        class="mt-10 max-w-2xl flex items-start gap-6 animate-fade-in-up animate-delay-500 animate-duration-1000"
+      >
+        <span class="block w-12 h-px bg-cream-deep mt-3 shrink-0 animate-draw-line"></span>
+        <p class="font-serif italic text-xl md:text-2xl text-bone leading-relaxed">
+          No es casualidad que estés aquí. Tu palabra para hoy también está aquí —
+          tres voces compartiendo Fe, Vida y Esperanza desde Colombia.
+        </p>
+      </div>
+
+      <div class="mt-10 flex flex-wrap items-center gap-5 animate-fade-in-up animate-delay-700">
+        <a href="#proposito" class="btn-elegi">
+          Conocer el propósito
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#oracion" class="btn-ghost">
+          Enviar petición
+        </a>
+      </div>
+    </div>
+
+    <!-- Columna derecha: micro-stats / palabra del día -->
+    <aside
+      class="col-span-12 lg:col-span-3 lg:pl-8 lg:border-l border-ink-line animate-fade-in animate-delay-1000 animate-duration-1000"
+    >
+      <p class="text-[12px] tracking-[0.32em] uppercase text-cream-deep mb-4">
+        Versículo del día
+      </p>
+      <p class="font-serif text-cream text-xl md:text-2xl leading-snug italic">
+        “Yo os elegí a vosotros y os he puesto para que vayáis y llevéis fruto.”
+      </p>
+      <p class="mt-3 text-xs tracking-[0.22em] uppercase text-bone-muted">
+        Juan 15:16
+      </p>
+    </aside>
+  </div>
+
+  <!-- Bottom marquee referencias -->
+  <div class="relative z-10 border-t border-ink-line overflow-hidden">
+    <div
+      class="flex gap-12 whitespace-nowrap animate-marquee py-4 will-change-transform"
+    >
+      {
+        Array.from({ length: 4 }).flatMap(() => [
+          "FE",
+          "✦",
+          "VIDA",
+          "✦",
+          "ESPERANZA",
+          "✦",
+          "PROPÓSITO",
+          "✦",
+          "ORACIÓN",
+          "✦",
+          "COMUNIDAD",
+          "✦",
+        ]).map((w) => (
+          <span class="text-[13px] tracking-[0.4em] uppercase text-bone-muted shrink-0">
+            {w}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- scroll indicator -->
+  <div
+    class="absolute bottom-24 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-3 animate-whisper"
+    aria-hidden="true"
+  >
+    <span class="text-[12px] tracking-[0.32em] uppercase text-bone-muted">Desliza</span>
+    <span class="block w-px h-10 bg-cream-deep"></span>
+  </div>
+</section>
