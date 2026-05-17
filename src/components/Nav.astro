@@ -1,12 +1,11 @@
 ---
 const links = [
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#proposito", label: "Propósito" },
-  { href: "#recursos", label: "Recursos" },
-  { href: "#blog", label: "Blog" },
-  { href: "#eventos", label: "Eventos" },
-  { href: "#oracion", label: "Oración" },
-  { href: "#contacto", label: "Contacto" },
+  { href: "/#nosotros", label: "Nosotros" },
+  { href: "/#proposito", label: "Propósito" },
+  { href: "/#recursos", label: "Recursos" },
+  { href: "/#eventos", label: "Eventos" },
+  { href: "/oracion", label: "Oración" },
+  { href: "/contacto", label: "Contacto" },
 ];
 ---
 
@@ -14,7 +13,7 @@ const links = [
   class="fixed top-0 left-0 right-0 z-50 px-6 md:px-10 py-5 backdrop-blur-md bg-ink/70 border-b border-ink-line/60"
 >
   <div class="flex items-center justify-between gap-8 max-w-[1600px] mx-auto">
-    <a href="#inicio" class="flex items-center gap-3 group">
+    <a href="/" class="flex items-center gap-3 group">
       <span
         class="font-display text-cream text-xl tracking-[-0.04em] leading-none group-hover:text-bone transition-colors"
       >
@@ -40,10 +39,10 @@ const links = [
     </nav>
 
     <a
-      href="#contacto"
+      href="/oracion"
       class="hidden md:inline-flex items-center gap-2 text-[13px] tracking-[0.28em] uppercase text-cream border-b border-cream/40 pb-1 hover:border-cream transition-colors"
     >
-      Orar contigo
+      Enviar petición
       <span aria-hidden="true">→</span>
     </a>
 

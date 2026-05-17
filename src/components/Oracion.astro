@@ -1,21 +1,16 @@
 ---
-const peticiones = [
-  { name: "Andrea · Cali", text: "Por mi mamá, está enferma y necesita un milagro.", praying: 248 },
-  { name: "Anónimo", text: "Por mi matrimonio. No sé cómo seguir, pero quiero creer.", praying: 412 },
-  { name: "Daniel · Bogotá", text: "Por trabajo. Llevo 6 meses orando, sé que Dios responde.", praying: 156 },
-  { name: "Luisa · Medellín", text: "Por mi hijo, que vuelva a casa y a la fe.", praying: 803 },
-];
+const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
 ---
 
 <section
   id="oracion"
-  class="relative bg-ink border-t border-ink-line py-28 md:py-40"
+  class="relative bg-ink border-t border-ink-line py-16 md:py-20"
 >
   <div class="max-w-[1600px] mx-auto px-6 md:px-10">
     <!-- Header -->
     <div class="grid grid-cols-12 gap-6 items-end mb-20">
       <div class="col-span-12 md:col-span-7 reveal">
-        <p class="eyebrow mb-8">Capítulo 06 — Pedidos de oración</p>
+        <p class="eyebrow mb-8">Pedidos de oración</p>
         <h2
           class="font-display uppercase text-bone leading-[0.88]"
           style="font-size: clamp(2.5rem, 7vw, 6.5rem); letter-spacing: -0.04em;"
@@ -26,108 +21,183 @@ const peticiones = [
         </h2>
       </div>
       <div class="col-span-12 md:col-span-4 md:col-start-9 reveal delay-2">
-        <p class="font-serif italic text-bone text-lg leading-relaxed">
-          Cada petición la leemos. Cada nombre lo llevamos. Aquí no hay peticiones
-          pequeñas — todas pasan por el altar.
+        <p class="font-serif italic text-bone text-2xl leading-relaxed">
+          Cada petición la leemos. Cada nombre lo llevamos. Aquí no hay
+          peticiones pequeñas — todas pasan por el altar.
         </p>
       </div>
     </div>
 
-    <div class="grid grid-cols-12 gap-6 md:gap-12">
-      <!-- Formulario -->
-      <div class="col-span-12 lg:col-span-7 reveal">
-        <form
-          class="bg-ink-soft border border-ink-line p-8 md:p-12"
-          onsubmit="event.preventDefault(); this.querySelector('button[type=submit]').textContent = 'Recibido. Estamos orando ✦'; this.reset();"
-        >
-          <p class="text-[13px] tracking-[0.32em] uppercase text-cream-deep mb-8">
-            Comparte tu petición
-          </p>
+    <!-- Formulario -->
+    <div class="col-span-12 lg:col-span-7 reveal">
+      <form
+        data-prayer-form
+        data-endpoint={endpoint}
+        class="bg-ink-soft border border-ink-line p-8 md:p-12"
+        novalidate
+      >
+        <input type="hidden" name="type" value="oracion" />
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <label class="block">
-              <span class="field-label">Nombre <span class="opt">opcional</span></span>
-              <input
-                type="text"
-                name="name"
-                placeholder="Cómo te llamas"
-                class="field"
-              />
-            </label>
-            <label class="block">
-              <span class="field-label">Ciudad <span class="opt">opcional</span></span>
-              <input
-                type="text"
-                name="city"
-                placeholder="Tu ciudad"
-                class="field"
-              />
-            </label>
-          </div>
+        <p class="text-[13px] tracking-[0.32em] uppercase text-cream-deep mb-8">
+          Comparte tu petición
+        </p>
 
-          <label class="block mb-8">
-            <span class="field-label">Tu petición</span>
-            <textarea
-              name="prayer"
-              rows="5"
-              required
-              placeholder="Escríbelo. Sin filtros. Sin miedo. Aquí no se juzga, aquí se ora."
-              class="field font-serif italic text-lg leading-relaxed resize-none"
-            ></textarea>
-          </label>
-
-          <label class="flex items-center gap-3 mb-10 cursor-pointer p-3 -ml-3 hover:bg-ink/40 transition-colors">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <label class="block">
+            <span class="field-label"
+              >Nombre <span class="opt">opcional</span></span
+            >
             <input
-              type="checkbox"
-              name="anon"
-              class="w-5 h-5 accent-cream bg-ink-field border border-ink-line-strong"
+              type="text"
+              name="name"
+              placeholder="Cómo te llamas"
+              class="field"
+              autocomplete="name"
             />
-            <span class="text-sm text-bone">
-              Publicar como anónimo en el muro de oración
-            </span>
           </label>
+          <label class="block">
+            <span class="field-label"
+              >Ciudad <span class="opt">opcional</span></span
+            >
+            <input
+              type="text"
+              name="city"
+              placeholder="Tu ciudad"
+              class="field"
+              autocomplete="address-level2"
+            />
+          </label>
+        </div>
 
-          <button type="submit" class="btn-elegi w-full justify-center">
-            Enviar petición
-            <span aria-hidden="true">→</span>
-          </button>
-        </form>
-      </div>
+        <label class="block mb-8">
+          <span class="field-label">Tu petición</span>
+          <textarea
+            name="prayer"
+            rows="5"
+            required
+            minlength="6"
+            placeholder="Escríbelo. Sin filtros. Sin miedo. Aquí no se juzga, aquí se ora."
+            class="field font-serif italic text-2xl leading-relaxed resize-none"
+          ></textarea>
+        </label>
 
-      <!-- Muro de oración -->
-      <div class="col-span-12 lg:col-span-5">
-        <p class="text-[13px] tracking-[0.32em] uppercase text-cream-deep mb-8 reveal">
-          Muro de oración · en vivo
-        </p>
+        <label
+          class="flex items-center gap-3 mb-10 cursor-pointer p-3 -ml-3 hover:bg-ink/40 transition-colors"
+        >
+          <input
+            type="checkbox"
+            name="anon"
+            class="w-5 h-5 accent-cream bg-ink-field border border-ink-line-strong"
+          />
+          <span class="text-sm text-bone">
+            Publicar como anónimo en el muro de oración
+          </span>
+        </label>
 
-        <ul class="space-y-px bg-ink-line border border-ink-line">
-          {
-            peticiones.map((p, i) => (
-              <li class:list={["bg-ink-soft p-6 md:p-7 reveal", `delay-${i + 1}`]}>
-                <p class="font-serif italic text-bone text-lg leading-snug mb-4">
-                  “{p.text}”
-                </p>
-                <div class="flex items-center justify-between">
-                  <span class="text-[12px] tracking-[0.28em] uppercase text-bone-muted">
-                    — {p.name}
-                  </span>
-                  <button
-                    class="flex items-center gap-2 text-[12px] tracking-[0.28em] uppercase text-cream hover:text-bone transition-colors group"
-                  >
-                    <span class="w-1.5 h-1.5 bg-cream rounded-full animate-glow"></span>
-                    {p.praying} orando
-                  </button>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+        <button type="submit" data-submit class="btn-elegi w-full justify-center">
+          <span data-label>Enviar petición</span>
+          <span data-arrow aria-hidden="true">→</span>
+        </button>
 
-        <p class="mt-6 text-xs text-bone-muted italic font-serif">
-          “Si dos de vosotros se pusieren de acuerdo en la tierra acerca de cualquier
-          cosa que pidieren, les será hecho.” — Mateo 18:19
-        </p>
-      </div>
+        <p
+          data-status
+          role="status"
+          aria-live="polite"
+          class="mt-6 text-sm font-serif italic text-bone-muted min-h-[1.5rem]"
+        ></p>
+      </form>
     </div>
   </div>
 </section>
+
+<script>
+  type FormState = "idle" | "loading" | "ok" | "error";
+
+  const forms = document.querySelectorAll<HTMLFormElement>("[data-prayer-form]");
+
+  forms.forEach((form) => {
+    const button = form.querySelector<HTMLButtonElement>("[data-submit]")!;
+    const labelEl = form.querySelector<HTMLSpanElement>("[data-label]")!;
+    const arrowEl = form.querySelector<HTMLSpanElement>("[data-arrow]")!;
+    const statusEl = form.querySelector<HTMLParagraphElement>("[data-status]")!;
+    const endpoint = form.dataset.endpoint || "";
+    const originalLabel = labelEl.textContent || "Enviar petición";
+
+    const setState = (state: FormState, message = "") => {
+      statusEl.textContent = message;
+      statusEl.classList.remove("text-cream", "text-blood", "text-bone-muted");
+      if (state === "ok") {
+        statusEl.classList.add("text-cream");
+        labelEl.textContent = "Recibido. Estamos orando ✦";
+        arrowEl.style.display = "none";
+        button.disabled = true;
+      } else if (state === "error") {
+        statusEl.classList.add("text-blood");
+        labelEl.textContent = originalLabel;
+        arrowEl.style.display = "";
+        button.disabled = false;
+      } else if (state === "loading") {
+        statusEl.classList.add("text-bone-muted");
+        labelEl.textContent = "Enviando…";
+        arrowEl.style.display = "none";
+        button.disabled = true;
+      } else {
+        statusEl.classList.add("text-bone-muted");
+        labelEl.textContent = originalLabel;
+        arrowEl.style.display = "";
+        button.disabled = false;
+      }
+    };
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const prayer = (form.elements.namedItem("prayer") as HTMLTextAreaElement)?.value?.trim();
+      if (!prayer || prayer.length < 6) {
+        setState("error", "Cuéntanos un poco más sobre tu petición.");
+        return;
+      }
+
+      if (!endpoint) {
+        setState(
+          "error",
+          "Aún no hay endpoint configurado. Avisa al admin (falta PUBLIC_FORM_ENDPOINT)."
+        );
+        return;
+      }
+
+      setState("loading");
+
+      try {
+        const data = new FormData(form);
+        const body = new URLSearchParams();
+        data.forEach((value, key) => body.append(key, value.toString()));
+        body.append("_ua", navigator.userAgent);
+
+        const res = await fetch(endpoint, {
+          method: "POST",
+          body,
+        });
+
+        if (!res.ok) throw new Error("HTTP " + res.status);
+
+        let payload: { ok?: boolean; error?: string } = {};
+        try {
+          payload = await res.json();
+        } catch {
+          // Apps Script a veces devuelve text/html en redirect; lo tratamos como ok.
+        }
+        if (payload && payload.ok === false) throw new Error(payload.error || "Error");
+
+        form.reset();
+        setState("ok", "Tu petición ya está en manos de los pastores. Estamos orando por ti.");
+      } catch (err) {
+        console.error(err);
+        setState(
+          "error",
+          "No pudimos enviar tu petición. Inténtalo de nuevo o escríbenos por WhatsApp."
+        );
+      }
+    });
+  });
+</script>

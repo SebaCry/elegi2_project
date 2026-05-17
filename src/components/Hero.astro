@@ -25,11 +25,7 @@
   <!-- Top meta strip -->
   <div
     class="relative z-10 pt-28 md:pt-32 px-6 md:px-10 flex items-center justify-between text-[12px] tracking-[0.32em] uppercase text-bone-muted animate-fade-in animate-duration-[1200ms]"
-  >
-    <span class="hidden md:inline">N° 001 — Manifiesto</span>
-    <span data-today>Hoy</span>
-    <span class="hidden md:inline">Bogotá · Medellín · Cali</span>
-  </div>
+  ></div>
 
   <!-- Núcleo del hero -->
   <div class="relative z-10 px-6 md:px-10 grid grid-cols-12 gap-6 items-end pb-16">
@@ -53,19 +49,19 @@
         class="mt-10 max-w-2xl flex items-start gap-6 animate-fade-in-up animate-delay-500 animate-duration-1000"
       >
         <span class="block w-12 h-px bg-cream-deep mt-3 shrink-0 animate-draw-line"></span>
-        <p class="font-serif italic text-xl md:text-2xl text-bone leading-relaxed">
+        <p class="font-serif italic text-2xl md:text-3xl text-bone leading-relaxed">
           No es casualidad que estés aquí. Tu palabra para hoy también está aquí —
           tres voces compartiendo Fe, Vida y Esperanza desde Colombia.
         </p>
       </div>
 
       <div class="mt-10 flex flex-wrap items-center gap-5 animate-fade-in-up animate-delay-700">
-        <a href="#proposito" class="btn-elegi">
-          Conocer el propósito
+        <a href="/oracion" class="btn-elegi">
+          Enviar petición
           <span aria-hidden="true">→</span>
         </a>
-        <a href="#oracion" class="btn-ghost">
-          Enviar petición
+        <a href="#proposito" class="btn-ghost">
+          Conocer el propósito
         </a>
       </div>
     </div>
@@ -77,7 +73,7 @@
       <p class="text-[12px] tracking-[0.32em] uppercase text-cream-deep mb-4">
         Versículo del día
       </p>
-      <p class="font-serif text-cream text-xl md:text-2xl leading-snug italic">
+      <p class="font-serif text-cream text-2xl md:text-3xl leading-snug italic">
         “Yo os elegí a vosotros y os he puesto para que vayáis y llevéis fruto.”
       </p>
       <p class="mt-3 text-xs tracking-[0.22em] uppercase text-bone-muted">
@@ -87,32 +83,7 @@
   </div>
 
   <!-- Bottom marquee referencias -->
-  <div class="relative z-10 border-t border-ink-line overflow-hidden">
-    <div
-      class="flex gap-12 whitespace-nowrap animate-marquee py-4 will-change-transform"
-    >
-      {
-        Array.from({ length: 4 }).flatMap(() => [
-          "FE",
-          "✦",
-          "VIDA",
-          "✦",
-          "ESPERANZA",
-          "✦",
-          "PROPÓSITO",
-          "✦",
-          "ORACIÓN",
-          "✦",
-          "COMUNIDAD",
-          "✦",
-        ]).map((w) => (
-          <span class="text-[13px] tracking-[0.4em] uppercase text-bone-muted shrink-0">
-            {w}
-          </span>
-        ))
-      }
-    </div>
-  </div>
+  
 
   <!-- scroll indicator -->
   <div
