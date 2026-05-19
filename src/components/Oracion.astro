@@ -161,7 +161,7 @@ const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
       if (!endpoint) {
         setState(
           "error",
-          "Aún no hay endpoint configurado. Avisa al admin (falta PUBLIC_FORM_ENDPOINT)."
+          "Aún no hay endpoint configurado. Avisa al admin (falta Variable de Entorno)."
         );
         return;
       }
@@ -190,7 +190,7 @@ const endpoint = import.meta.env.PUBLIC_FORM_ENDPOINT ?? "";
         if (payload && payload.ok === false) throw new Error(payload.error || "Error");
 
         form.reset();
-        setState("ok", "Tu petición ya está en manos de los pastores. Estamos orando por ti.");
+        setState("ok", "Tu petición ya está en manos de los influencers. Estamos orando por ti.");
       } catch (err) {
         console.error(err);
         setState(
